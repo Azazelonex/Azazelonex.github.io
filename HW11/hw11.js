@@ -12,22 +12,19 @@ function enterUserPassFunc() {
 
 function checkLogin() {
   let userLogin = enterUserLoginFunc();
-  for (let key in listOfUser) {
-      if (key === userLogin) {
-          return userLogin;
+  while(!(userLogin in listOfUser)) {
+      let ask = confirm("You enter wrong login, create new user whith this login");
+      if(ask) {
+          listOfUser[userLogin] = `${enterUserPassFunc()}`;       
+          checkLogin();
       } else {
-          let ask = confirm("You enter wrong login, create new user whith this login");
-          if(ask) {
-              listOfUser[userLogin] = `${enterUserPassFunc()}`;
-              return userLogin;
-          } else {
-              return console.log('you cannot enter without a login');
-          }
+          return console.log('you cannot enter without a login');
       }
-  }   
+  }
+  return userLogin;    
 }
 
-let userLogin = checkLogin();
+let userLogin;
 
 function checkPass() {
   let userPass = enterUserPassFunc();
@@ -43,4 +40,5 @@ function checkPass() {
   }
 }
 
+checkLogin();
 checkPass();
