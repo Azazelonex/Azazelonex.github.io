@@ -10,21 +10,24 @@ function enterUserPassFunc() {
   return prompt("Enter your password","");
 }
 
+let userLogin = checkLogin();
+
 function checkLogin() {
   let userLogin = enterUserLoginFunc();
-  while(!(userLogin in listOfUser)) {
-      let ask = confirm("You enter wrong login, create new user whith this login");
-      if(ask) {
+  if (userLogin in listOfUser) {
+    return userLogin;
+  } else {
+    while(!(userLogin in listOfUser)) {
+        let ask = confirm("You enter wrong login, create new user whith this login");
+        if(ask) {
           listOfUser[userLogin] = `${enterUserPassFunc()}`;       
-          checkLogin();
-      } else {
+          return checkLogin();
+        } else {
           return console.log('you cannot enter without a login');
-      }
+        }
+    }
   }
-  return userLogin;    
 }
-
-let userLogin;
 
 function checkPass() {
   let userPass = enterUserPassFunc();
@@ -40,5 +43,4 @@ function checkPass() {
   }
 }
 
-checkLogin();
 checkPass();
