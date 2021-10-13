@@ -35,7 +35,7 @@ function checkPass() {
       if (ask) {
          checkPass();
       } else {
-          return console.log('you cannot enter without a password');
+          return console.log('you refused to enter your login');
       }
   } else {
       return console.log('You enter');
