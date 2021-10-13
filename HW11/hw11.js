@@ -22,7 +22,7 @@ function checkLogin() {
       listOfUser[userLogin] = `${enterUserPassFunc()}`;       
       return checkLogin();
     } else {
-      return console.log('you cannot enter without a login');
+      return undefined;
     }
   }
 }
@@ -35,7 +35,7 @@ function checkPass() {
       if (ask) {
          checkPass();
       } else {
-          return console.log('you refused to enter your login');
+          return console.log('you cannot enter without a pass');
       }
   } else {
       return console.log('You enter');
