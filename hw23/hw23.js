@@ -1,6 +1,4 @@
 //First
-let arr = [1,2,3,4,5,6,];
-
 function printNumbersSetInterval(arr) {
 
   let index = 0;
