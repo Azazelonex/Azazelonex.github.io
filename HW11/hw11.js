@@ -17,30 +17,36 @@ function checkLogin() {
   if (userLogin in listOfUser) {
     return userLogin;
   } else {
-    while(!(userLogin in listOfUser)) {
-        let ask = confirm("You enter wrong login, create new user whith this login");
-        if(ask) {
-          listOfUser[userLogin] = `${enterUserPassFunc()}`;       
-          return checkLogin();
-        } else {
-          return console.log('you cannot enter without a login');
-        }
+    let ask = confirm("You enter wrong login, create new user whith this login");
+    if(ask) {
+      listOfUser[userLogin] = `${enterUserPassFunc()}`;       
+      return checkLogin();
+    } else {
+      return undefined;
     }
   }
 }
 
 function checkPass() {
+
   let userPass = enterUserPassFunc();
   if (userPass !== listOfUser[userLogin]) {
       let ask = confirm('You enter wrong password, try again?');
       if (ask) {
          checkPass();
       } else {
-          return console.log('you cannot enter without a password');
+          return console.log('you cannot enter without a pass');
       }
   } else {
       return console.log('You enter');
   }
 }
 
-checkPass();
+function valid() {
+  if (userLogin === undefined ) {
+    console.log('you cannot enter without a login');
+  } else {
+    checkPass();
+  }
+}
+valid();
