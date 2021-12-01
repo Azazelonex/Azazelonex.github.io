@@ -2,7 +2,7 @@ function getRandomGreeting() {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', '/unstable?maxRandom=20&prob=50');
+    xhr.open('GET', 'https://async-demo.herokuapp.com/unstable?maxRandom=20&prob=50');
 
     xhr.send();
 
